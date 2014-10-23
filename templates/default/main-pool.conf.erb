@@ -1,0 +1,42 @@
+[<%= @pool_name %>]
+
+user = <%= @user || node['php-fpm']['user'] %>
+group = <%= @group || node['php-fpm']['group'] %>
+
+listen = <%= @listen || "/var/run/php-fpm-#{@pool_name}.sock" %>
+
+<% unless @listen_owner.nil? %>
+listen.owner = <%= @listen_owner %>
+<% end %>
+
+<% unless @listen_group.nil? %>
+listen.group = <%= @listen_group %>
+<% end %>
+
+listen.mode = <%= @listen_mode || "0660" %>
+
+listen.allowed_clients = <%= @allowed_clients ? ([@allowed_clients].flatten.join(',')) : "127.0.0.1" %>
+
+pm = <%= @process_manager || "ondemand" %>
+
+pm.max_children = <%= @max_children || 50 %>
+
+<% if @process_manager == "dynamic" %>
+<% if @start_servers %>
+ pm.start_servers = <%= @start_servers %>
+<% end %>
+
+pm.min_spare_servers = <%= @min_spare_servers || 5 %>
+
+pm.max_spare_servers = <%= @max_spare_servers || 35 %>
+<% end %>
+
+pm.max_requests = <%= @max_requests || 500 %>
+
+catch_workers_output = <%= @catch_workers_output || "no" %>
+
+security.limit_extensions = <%=@security_limit_extensions || ".php" %>
+
+<% @php_options.each do |name,value| %>
+<%= "#{name} = #{value}" %>
+<% end %>

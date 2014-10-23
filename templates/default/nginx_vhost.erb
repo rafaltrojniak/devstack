@@ -1,0 +1,20 @@
+server {
+
+  listen 80;
+  server_name _;
+
+  error_log    /var/log/nginx/main_error.log;
+  access_log   /var/log/nginx/main_access.log;
+
+  root <%= node['devstack']['docroot']%>;
+
+  try_files $uri $uri.php $uri/index.php;
+
+  location ~ ".*\.php$" {
+    fastcgi_index   index.php;
+    fastcgi_pass   unix:/var/run/php-fpm-main.sock;
+    include         fastcgi_params;
+    fastcgi_param   SCRIPT_FILENAME   <%= node['devstack']['docroot']%>$fastcgi_script_name;
+    fastcgi_param   PATH_INFO         $fastcgi_script_name;
+  }
+}

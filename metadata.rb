@@ -1,0 +1,12 @@
+name             'devstack'
+maintainer       'Rafal Trojniak'
+maintainer_email 'chef@trojniak.net'
+license          'All rights reserved'
+description      'Installs/Configures gemtrack'
+long_description 'Installs/Configures gemtrack'
+version          '0.1.0'
+
+depends 'yum-epel', '~> 0.5.1'
+depends 'php-fpm', '~> 0.6.10'
+depends 'nginx', '~> 2.7.4'
+depends 'composer', '~> 1.0.5'
