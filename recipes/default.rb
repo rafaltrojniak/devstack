@@ -8,6 +8,8 @@ php_fpm_pool 'main' do
   enable true
 end
 
+package 'php-pecl-xdebug'
+
 include_recipe 'nginx'
 
 directory '/var/www' do
