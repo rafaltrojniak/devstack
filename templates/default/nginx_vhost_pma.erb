@@ -1,0 +1,21 @@
+server {
+
+  listen 81;
+  server_name _;
+
+  error_log    /var/log/nginx/pma_error.log;
+  access_log   /var/log/nginx/pma_access.log;
+
+  root /usr/share/phpMyAdmin;
+
+  try_files $uri $uri/index.php;
+
+  location ~ ".*\.php$" {
+    fastcgi_index   index.php;
+    fastcgi_pass   unix:/var/run/php-fpm-pma.sock;
+    include         fastcgi_params;
+    fastcgi_param   SCRIPT_FILENAME   /usr/share/phpMyAdmin$fastcgi_script_name;
+    fastcgi_param   PATH_INFO         $fastcgi_script_name;
+  }
+}
+

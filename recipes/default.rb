@@ -30,3 +30,24 @@ end
 nginx_site 'main' do
   enable true
 end
+
+include_recipe 'mysql::server'
+
+package 'phpMyAdmin'
+
+template "etc/phpMyAdmin/config.inc.php" do
+  source 'phpmyadmin_config.php.erb'
+end
+
+php_fpm_pool 'pma' do
+  enable true
+end
+
+template "#{node['nginx']['dir']}/sites-available/pma" do
+  source 'nginx_vhost_pma.erb'
+  notifies :reload, 'service[nginx]', :immediately
+end
+
+nginx_site 'pma' do
+  enable true
+end
