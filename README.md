@@ -17,33 +17,47 @@
 # Quick-start
 * Clone my repository
 
+  ````
   $ git clone https://github.com/rafaltrojniak/devstack.git; cd devstack/
+  ````
 
 * Create virtual machine, and provision it with vagrant (this can take a while)
 
+  ````
   $ vagrant up
+  ````
 
 * go into document root and edit some file
 
+  ````
   $ cd docroot ; vim index.php
+  ````
 
 * Open file in a browser http://127.0.0.1:1080/index.php
 * Continue development
 
 * After you will finish your work, but don't want to drop environment
 
+  ````
   $ vagrant halt
+  ````
 
 * When you will finish development on project, will broken database/nginx or some other part of environment,
 
+  ````
   $ vagrant destroy
+  ````
 
 # Dependencies
 * Vagrant
 * vagrant-berkshelf plugin
 
+  ````
   $ vagrant plugin install vagrant-berkshelf --plugin-version 2.0.1
+  ````
 
 * vagrant-omnibus plugin
 
+  ````
   $ vagrant plugin install vagrant-omnibus
+  ````
