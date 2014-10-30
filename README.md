@@ -32,3 +32,10 @@
 
 * When you will finish development on project, will broken database/nginx or some other part of environment,
  $ vagrant destroy
+
+# Dependencies
+* Vagrant
+* vagrant-berkshelf plugin
+ $ vagrant plugin install vagrant-berkshelf --plugin-version 2.0.1
+* vagrant-omnibus plugin
+ $ vagrant plugin install vagrant-omnibus
