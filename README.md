@@ -11,31 +11,31 @@
 * PHPMyAdmin is available on host system on port 1081
 
 ## Quick-links
-- Application: http://127.0.0.1:1080/
-- PHPMyAdmin http://127.0.0.1:1081/
+* Application: http://127.0.0.1:1080/
+* PHPMyAdmin http://127.0.0.1:1081/
 
 # Quick-start
 * Clone my repository
- $ git clone https://github.com/rafaltrojniak/devstack.git; cd devstack/
+  $ git clone https://github.com/rafaltrojniak/devstack.git; cd devstack/
 
 * Create virtual machine, and provision it with vagrant (this can take a while)
- $ vagrant up
+  $ vagrant up
 
 * go into document root and edit some file
- $ cd docroot ; vim index.php
+  $ cd docroot ; vim index.php
 
 * Open file in a browser http://127.0.0.1:1080/index.php
 * Continue development
   
 * After you will finish your work, but don't want to drop environment
- $ vagrant halt
+  $ vagrant halt
 
 * When you will finish development on project, will broken database/nginx or some other part of environment,
- $ vagrant destroy
+  $ vagrant destroy
 
 # Dependencies
 * Vagrant
 * vagrant-berkshelf plugin
- $ vagrant plugin install vagrant-berkshelf --plugin-version 2.0.1
+  $ vagrant plugin install vagrant-berkshelf --plugin-version 2.0.1
 * vagrant-omnibus plugin
- $ vagrant plugin install vagrant-omnibus
+  $ vagrant plugin install vagrant-omnibus
